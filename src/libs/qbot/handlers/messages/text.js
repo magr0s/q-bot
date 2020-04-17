@@ -4,7 +4,7 @@ const { Concierge, tvParser, findChatsMember } = require('../../utils')
 const { SEND_OPTIONS } = require('../../configs/bot.json')
 const { ACL_CHAT_MEMBER } = require('../../configs/acls.json')
 const { TV_MENTION } = require('../../configs/tvs.json')
-const { MSG_WELCOME } = require('../../configs/msgs.json')
+const { MSG_MEMBER_WELCOME } = require('../../configs/msgs.json')
 
 const textHandler = async ({ message, reply }, next) => {
   const {
@@ -30,19 +30,21 @@ const textHandler = async ({ message, reply }, next) => {
     const { success, msg } = await Concierge.validate(memberId, text)
 
     if (success) {
-      const memberName = `${firstName} ${lastName}`.trim() || username
+      await telegram.restrictChatMember(`@${group}`, memberId, ACL_CHAT_MEMBER, 0)
 
-      const mention = tvParser(TV_MENTION, {
-        id: memberId,
-        name: memberName
-      })
+      // TODO: Create message builder
+      if (MSG_MEMBER_WELCOME) {
+        const memberName = `${firstName} ${lastName}`.trim() || username
 
-      const welcomeMsg = tvParser(MSG_WELCOME, { mention })
+        const mention = tvParser(TV_MENTION, {
+          id: memberId,
+          name: memberName
+        })
 
-      await Promise.all([
-        telegram.restrictChatMember(`@${group}`, memberId, ACL_CHAT_MEMBER, 0),
-        telegram.sendMessage(`@${group}`, welcomeMsg, SEND_OPTIONS)
-      ])
+        const welcomeMsg = tvParser(MSG_MEMBER_WELCOME, { mention })
+
+        await telegram.sendMessage(`@${group}`, welcomeMsg, SEND_OPTIONS)
+      }
     }
 
     return reply(msg, SEND_OPTIONS)

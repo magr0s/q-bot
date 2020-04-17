@@ -2,6 +2,7 @@
   "MSG_NEED_VERIFY": "need verify",
   "MSG_ANSWER_SUCCESS": "answer success",
   "MSG_ANSWER_FAILURE": "answer failure",
-  "MSG_UNKNOW_MEMBER": "unknow member",
-  "MSG_WELCOME": "Welcome, [tv.mention]"
+  "MSG_NEWBIE_WELCOME": "Welcome, newbie [tv.mention]",
+  "MSG_MEMBER_WELCOME": "Welcome, [tv.mention]",
+  "MSG_UNKNOW_MEMBER": "unknow member"
 }
