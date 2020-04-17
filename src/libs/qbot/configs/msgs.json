@@ -3,6 +3,6 @@
   "MSG_ANSWER_SUCCESS": "Вы успешно ответили на вопрос, открываю доступ писать в чат.",
   "MSG_ANSWER_FAILURE": "Ответ не верный, попробуйте ещё раз.",
   "MSG_NEWBIE_WELCOME": "Добро пожаловать [tv.mention]. Пройдите опознание у @Hotubich",
-  "MSG_MEMBER_WELCOME": "Открываю доступ, [tv.mention]",
+  "MSG_MEMBER_WELCOME": "Открываю доступ, [tv.mention].",
   "MSG_UNKNOW_MEMBER": "Неопознанный объект, доступ запрещён."
 }
