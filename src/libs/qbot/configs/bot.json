@@ -1,0 +1,16 @@
+{
+  "SEND_OPTIONS": {
+    "parse_mode": "markdown"
+  },
+
+  "GROUPS": {
+    "qbot_staging": {
+      "question": "Question?",
+
+      "answer": [
+        "answer",
+        "test answer"
+      ]
+    }
+  }
+}
