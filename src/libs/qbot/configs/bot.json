@@ -5,11 +5,11 @@
 
   "GROUPS": {
     "qbot_staging": {
-      "question": "Question?",
+      "question": "Напишите имя фреймворка, начинающееся на Q",
 
       "answer": [
-        "answer",
-        "test answer"
+        "quasar",
+        "квазар"
       ]
     }
   }
