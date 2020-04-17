@@ -27,8 +27,6 @@ const newChatMemberHandler = async ({ message, reply }, next) => {
     }
   } = message
 
-  const question = Concierge.getQuestion(`${chatName}`)
-
   try {
     await Promise.all([
       telegram.restrictChatMember(chatId, memberId, ACL_NEW_CHAT_MEMBER, 0),
@@ -46,8 +44,10 @@ const newChatMemberHandler = async ({ message, reply }, next) => {
 
       const welcomeMsg = tvParser(MSG_NEWBIE_WELCOME, { mention })
 
-      return reply(welcomeMsg, SEND_OPTIONS)
+      await telegram.sendMessage(`@${chatName}`, welcomeMsg, SEND_OPTIONS)
     }
+
+    const question = Concierge.getQuestion(`${chatName}`)
 
     await telegram.sendMessage(memberId, question, SEND_OPTIONS)
 
