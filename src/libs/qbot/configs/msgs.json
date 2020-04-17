@@ -2,7 +2,7 @@
   "MSG_NEED_VERIFY": "Пройдите опознание что вы человек (а не бот).",
   "MSG_ANSWER_SUCCESS": "Вы успешно ответили на вопрос, открываю доступ писать в чат.",
   "MSG_ANSWER_FAILURE": "Ответ не верный, попробуйте ещё раз.",
-  "MSG_NEWBIE_WELCOME": "Добро пожаловать [tv.mention]. Пройдите опознание у @Hotubich_bot",
+  "MSG_NEWBIE_WELCOME": "Добро пожаловать [tv.mention]. Пройдите опознание у @hotubich_bot",
   "MSG_MEMBER_WELCOME": "Открываю доступ, [tv.mention].",
   "MSG_UNKNOW_MEMBER": "Неопознанный объект, доступ запрещён."
 }
