@@ -1,10 +1,14 @@
 const { telegram } = require('../..')
-const { Concierge, tvParser, findChatsMember } = require('../../utils')
+const { tvParser, findChatsMember } = require('../../utils')
 
 const { SEND_OPTIONS } = require('../../configs/bot.json')
 const { ACL_CHAT_MEMBER } = require('../../configs/acls.json')
 const { TV_MENTION } = require('../../configs/tvs.json')
-const { MSG_MEMBER_WELCOME } = require('../../configs/msgs.json')
+const {
+  MSG_ANSWER_FAILURE,
+  MSG_ANSWER_SUCCESS,
+  MSG_MEMBER_WELCOME
+} = require('../../configs/msgs.json')
 
 const textHandler = async ({ message, reply }, next) => {
   const {
@@ -27,7 +31,9 @@ const textHandler = async ({ message, reply }, next) => {
 
     if (!isRestricted) return next()
 
-    const { success, msg } = await Concierge.validate(memberId, text)
+    const text_ = text.trim().toLowerCase()
+
+    const success = text_ === group || text_ === `@${group}`
 
     if (success) {
       await telegram.restrictChatMember(`@${group}`, memberId, ACL_CHAT_MEMBER, 0)
@@ -36,16 +42,18 @@ const textHandler = async ({ message, reply }, next) => {
       if (MSG_MEMBER_WELCOME) {
         const memberName = `${firstName} ${lastName}`.trim() || username
 
-        const mention = tvParser(TV_MENTION, {
+        const memberMention = tvParser(TV_MENTION, {
           id: memberId,
           name: memberName
         })
 
-        const welcomeMsg = tvParser(MSG_MEMBER_WELCOME, { mention })
+        const welcomeMsg = tvParser(MSG_MEMBER_WELCOME, { memberMention })
 
         await telegram.sendMessage(`@${group}`, welcomeMsg, SEND_OPTIONS)
       }
     }
+
+    const msg = success ? MSG_ANSWER_SUCCESS : MSG_ANSWER_FAILURE
 
     return reply(msg, SEND_OPTIONS)
   } catch (error) {

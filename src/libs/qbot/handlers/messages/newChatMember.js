@@ -1,12 +1,11 @@
 const qbot = require('../..')
-const { Concierge, tvParser } = require('../../utils')
+const { tvParser } = require('../../utils')
 
 const { SEND_OPTIONS } = require('../../configs/bot.json')
 const { TV_MENTION } = require('../../configs/tvs.json')
 const { ACL_NEW_CHAT_MEMBER } = require('../../configs/acls.json')
 
 const {
-  MSG_NEED_VERIFY,
   MSG_NEWBIE_WELCOME
 } = require('../../configs/msgs.json')
 
@@ -22,36 +21,41 @@ const newChatMemberHandler = async ({ message, reply }, next) => {
     new_chat_member: {
       id: memberId,
       username,
-      first_name: firstName,
-      last_name: lastName
+      first_name: firstName = '',
+      last_name: lastName = ''
     }
   } = message
 
   try {
-    await Promise.all([
-      telegram.restrictChatMember(chatId, memberId, ACL_NEW_CHAT_MEMBER, 0),
-      telegram.sendMessage(memberId, MSG_NEED_VERIFY, SEND_OPTIONS)
-    ])
+    // TODO: Refactor to context
+    const me = await telegram.getMe()
+
+    await telegram.restrictChatMember(chatId, memberId, ACL_NEW_CHAT_MEMBER, 0)
+
+    const memberName = `${firstName} ${lastName}`.trim() || username
 
     // TODO: Create message builder
-    if (MSG_NEWBIE_WELCOME) {
-      const memberName = `${firstName} ${lastName}`.trim() || username
+    const memberMention = tvParser(TV_MENTION, {
+      id: memberId,
+      name: memberName
+    })
 
-      const mention = tvParser(TV_MENTION, {
-        id: memberId,
-        name: memberName
-      })
+    const {
+      id: botId,
+      username: botName
+    } = me
 
-      const welcomeMsg = tvParser(MSG_NEWBIE_WELCOME, { mention })
+    const botMention = tvParser(TV_MENTION, {
+      id: botId,
+      name: `@${botName}`
+    })
 
-      await telegram.sendMessage(`@${chatName}`, welcomeMsg, SEND_OPTIONS)
-    }
+    const welcomeMsg = tvParser(MSG_NEWBIE_WELCOME, {
+      memberMention,
+      botMention
+    })
 
-    const question = Concierge.getQuestion(`${chatName}`)
-
-    await telegram.sendMessage(memberId, question, SEND_OPTIONS)
-
-    return next()
+    return reply(welcomeMsg, SEND_OPTIONS)
   } catch (error) {
     throw error
   }
