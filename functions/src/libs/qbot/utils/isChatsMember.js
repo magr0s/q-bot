@@ -1,4 +1,4 @@
-const { telegram } = require('../../qbot')
+const { telegram } = require('..')
 const { GROUPS } = require('../configs/bot.json')
 
 const isChatsMember = (memberId) => {

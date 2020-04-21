@@ -1,4 +1,4 @@
-const qbot = require('../..')
+const qbot = require('../../../qbot')
 const { tvParser } = require('../../utils')
 
 const { SEND_OPTIONS } = require('../../configs/bot.json')
