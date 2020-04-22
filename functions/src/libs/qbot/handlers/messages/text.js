@@ -1,5 +1,5 @@
 const { telegram } = require('../..')
-const { tvParser, findChatsMember } = require('../../utils')
+const { tvParser, getChatsMember } = require('../../utils')
 
 const { SEND_OPTIONS } = require('../../configs/bot.json')
 const { ACL_CHAT_MEMBER } = require('../../configs/acls.json')
@@ -26,7 +26,7 @@ const textHandler = async ({ message, reply }, next) => {
   if (type !== 'private') return next()
 
   try {
-    const { status, group } = await findChatsMember(memberId)
+    const { status, group } = await getChatsMember(memberId)
     const isRestricted = status === 'restricted'
 
     if (!isRestricted) return next()

@@ -14,8 +14,7 @@ const { telegram } = qbot
 const newChatMemberHandler = async ({ message, reply }, next) => {
   const {
     chat: {
-      id: chatId,
-      username: chatName
+      id: chatId
     },
 
     new_chat_member: {

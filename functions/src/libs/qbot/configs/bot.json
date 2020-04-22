@@ -3,47 +3,12 @@
     "parse_mode": "markdown"
   },
 
-  "GROUPS": {
-    "qbot_staging": {
-      "question": "Question",
-      "answer": [
-        "Answer"
-      ]
-    },
-    "quasar_ru": {
-      "question": "Напишите имя Vue фреймворка, начинающееся на Q.....",
-      "answer": [
-        "quasar",
-        "квазар",
-        "quasar framework",
-        "quasar-framework",
-        "квазар фреймворк",
-        "квазар-фреймворк"
-      ]
-    },
-    "SunEngine": {
-       "question": "Question",
-       "answer": [
-        "Answer"
-      ]
-    },
-    "happy_developer_chat": {
-       "question": "Question",
-       "answer": [
-        "Answer"
-      ]
-    },
-    "web_graphics_ru": {
-       "question": "Question",
-       "answer": [
-        "Answer"
-      ]
-    },
-    "DotNetVueJs": {
-       "question": "Question",
-       "answer": [
-        "Answer"
-      ]
-    }
-  }
+  "GROUPS": [
+    "qbot_staging",
+    "quasar_ru",
+    "SunEngine",
+    "happy_developer_chat",
+    "web_graphics_ru",
+    "DotNetVueJs"
+  ]
 }
