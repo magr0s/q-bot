@@ -1,9 +1,10 @@
 const { telegram } = require('../..')
-const { tvParser, getChatsMember } = require('../../utils')
+const { tvParser, getChatsMember, randomizer } = require('../../utils')
 
 const { SEND_OPTIONS } = require('../../configs/bot.json')
 const { ACL_CHAT_MEMBER } = require('../../configs/acls.json')
 const { TV_MENTION } = require('../../configs/tvs.json')
+
 const {
   MSG_ANSWER_FAILURE,
   MSG_ANSWER_SUCCESS,
@@ -39,7 +40,8 @@ const textHandler = async ({ message, reply }, next) => {
       await telegram.restrictChatMember(`@${group}`, memberId, ACL_CHAT_MEMBER, 0)
 
       // TODO: Create message builder
-      if (MSG_MEMBER_WELCOME) {
+      if (Array.isArray(MSG_MEMBER_WELCOME)) {
+        const msgs = MSG_MEMBER_WELCOME[group] || MSG_MEMBER_WELCOME.defaults
         const memberName = `${firstName} ${lastName}`.trim() || username
 
         const memberMention = tvParser(TV_MENTION, {
@@ -47,7 +49,7 @@ const textHandler = async ({ message, reply }, next) => {
           name: memberName
         })
 
-        const welcomeMsg = tvParser(MSG_MEMBER_WELCOME, { memberMention })
+        const welcomeMsg = tvParser(randomizer(msgs), { memberMention })
 
         await telegram.sendMessage(`@${group}`, welcomeMsg, SEND_OPTIONS)
       }

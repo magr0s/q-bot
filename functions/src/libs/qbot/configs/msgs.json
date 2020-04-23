@@ -1,7 +1,12 @@
 {
   "MSG_ANSWER_FAILURE": "Ответ не верный, попробуйте ещё раз.",
   "MSG_ANSWER_SUCCESS": "Вы успешно ответили на вопрос, открываю доступ писать в чат.",
-  "MSG_MEMBER_WELCOME": "Открываю доступ, [tv.memberMention].",
+
+  "MSG_MEMBER_WELCOME": {
+    "defaults": [
+      "Открываю доступ, [tv.memberMention]."
+    ]
+  },
 
   "MSG_NEWBIE_WELCOME": {
     "defaults": [
@@ -10,7 +15,7 @@
       "Приветствуем  [tv.memberMention]! Напишите [tv.botMention] что бы пройти опознание и писать в чат.",
       "Добро пожаловать [tv.memberMention]. Напишите [tv.botMention] что бы пройти опознани что вы не бот.",
       "Добро пожаловать [tv.memberMention]. Напишите [tv.botMention] что бы пройти ментальное опознание и писать в чат.",
-      "Приветствуем  [tv.memberMention]! Напишите [tv.botMention] что бы пройти ментальное опознание и писать в чат.",
+      "Приветствуем  [tv.memberMention]! Напишите [tv.botMention] что бы пройти ментальное опознание и писать в чат."
     ]
   },
 
