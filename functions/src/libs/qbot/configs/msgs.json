@@ -6,8 +6,11 @@
   "MSG_NEWBIE_WELCOME": {
     "defaults": [
       "Добро пожаловать [tv.memberMention]. Напишите [tv.botMention] что бы пройти опознание и писать в чат.",
-      "Welcome msg 2",
-      "Welcome msg 3"
+      "Приветствуем  [tv.memberMention]! Напишите [tv.botMention] что бы пройти опознани что вы не бот.",
+      "Приветствуем  [tv.memberMention]! Напишите [tv.botMention] что бы пройти опознание и писать в чат.",
+      "Добро пожаловать [tv.memberMention]. Напишите [tv.botMention] что бы пройти опознани что вы не бот.",
+      "Добро пожаловать [tv.memberMention]. Напишите [tv.botMention] что бы пройти ментальное опознание и писать в чат.",
+      "Приветствуем  [tv.memberMention]! Напишите [tv.botMention] что бы пройти ментальное опознание и писать в чат.",
     ]
   },
 
