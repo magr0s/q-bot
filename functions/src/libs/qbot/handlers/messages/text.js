@@ -40,7 +40,7 @@ const textHandler = async ({ message, reply }, next) => {
       await telegram.restrictChatMember(`@${group}`, memberId, ACL_CHAT_MEMBER, 0)
 
       // TODO: Create message builder
-      if (Array.isArray(MSG_MEMBER_WELCOME)) {
+      if (MSG_MEMBER_WELCOME) {
         const msgs = MSG_MEMBER_WELCOME[group] || MSG_MEMBER_WELCOME.defaults
         const memberName = `${firstName} ${lastName}`.trim() || username
 
