@@ -2,7 +2,15 @@
   "MSG_ANSWER_FAILURE": "Ответ не верный, попробуйте ещё раз.",
   "MSG_ANSWER_SUCCESS": "Вы успешно ответили на вопрос, открываю доступ писать в чат.",
   "MSG_MEMBER_WELCOME": "Открываю доступ, [tv.memberMention].",
-  "MSG_NEWBIE_WELCOME": "Добро пожаловать [tv.memberMention]. Напишите [tv.botMention] что бы пройти опознание и писать в чат.",
+
+  "MSG_NEWBIE_WELCOME": {
+    "defaults": [
+      "Добро пожаловать [tv.memberMention]. Напишите [tv.botMention] что бы пройти опознание и писать в чат.",
+      "Welcome msg 2",
+      "Welcome msg 3"
+    ]
+  },
+
   "MSG_VALIDATE": "Пройдите опознание что вы человек (а не бот). Напишите @ имя группы к которой хотите получить доступ.",
   "MSG_UNKNOW_MEMBER": "Неопознанный объект, доступ запрещён."
 }

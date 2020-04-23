@@ -1,5 +1,5 @@
 const qbot = require('../../../qbot')
-const { tvParser } = require('../../utils')
+const { tvParser, randomizer } = require('../../utils')
 
 const { SEND_OPTIONS } = require('../../configs/bot.json')
 const { TV_MENTION } = require('../../configs/tvs.json')
@@ -14,7 +14,8 @@ const { telegram } = qbot
 const newChatMemberHandler = async ({ message, reply }, next) => {
   const {
     chat: {
-      id: chatId
+      id: chatId,
+      username: chatName
     },
 
     new_chat_member: {
@@ -49,7 +50,9 @@ const newChatMemberHandler = async ({ message, reply }, next) => {
       name: `@${botName}`
     })
 
-    const welcomeMsg = tvParser(MSG_NEWBIE_WELCOME, {
+    const msgs = MSG_NEWBIE_WELCOME[chatName] || MSG_NEWBIE_WELCOME.defaults
+
+    const welcomeMsg = tvParser(randomizer(msgs), {
       memberMention,
       botMention
     })
