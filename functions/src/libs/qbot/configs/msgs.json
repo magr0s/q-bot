@@ -19,6 +19,8 @@
     ]
   },
 
+  "MSG_NOT_CHAT_MEMBER": "Not chat member",
+  "MSG_NOT_RESTRICTED": "Not restricted",
   "MSG_VALIDATE": "Пройдите опознание что вы человек (а не бот). Напишите @ имя группы к которой хотите получить доступ.",
   "MSG_UNKNOW_MEMBER": "Неопознанный объект, доступ запрещён."
 }
