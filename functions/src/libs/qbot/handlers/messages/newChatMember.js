@@ -27,10 +27,17 @@ const newChatMemberHandler = async ({ message, reply }, next) => {
   } = message
 
   try {
-    // TODO: Refactor to context
-    const me = await telegram.getMe()
+    const {
+      id: botId,
+      username: botName
+    } = await telegram.getMe()
 
-    await telegram.restrictChatMember(chatId, memberId, ACL_NEW_CHAT_MEMBER, 0)
+    const { status: chatbotStatus } = await telegram.getChatMember(chatId, botId)
+
+    if (
+      botId === memberId ||
+      chatbotStatus !== 'administrator'
+    ) return next()
 
     const memberName = `${firstName} ${lastName}`.trim() || username
 
@@ -39,11 +46,6 @@ const newChatMemberHandler = async ({ message, reply }, next) => {
       id: memberId,
       name: memberName
     })
-
-    const {
-      id: botId,
-      username: botName
-    } = me
 
     const botMention = tvParser(TV_MENTION, {
       id: botId,
@@ -56,6 +58,8 @@ const newChatMemberHandler = async ({ message, reply }, next) => {
       memberMention,
       botMention
     })
+
+    await telegram.restrictChatMember(chatId, memberId, ACL_NEW_CHAT_MEMBER, 0)
 
     return reply(welcomeMsg, SEND_OPTIONS)
   } catch (error) {
