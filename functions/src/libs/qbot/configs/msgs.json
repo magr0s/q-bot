@@ -4,14 +4,26 @@
 
   "MSG_MEMBER_WELCOME": {
     "defaults": [
-      "Открываю доступ, [tv.memberMention]."
-    ]
+      "Открываю доступ для [tv.memberMention]. Приветствуем в группе!",
+      "Открываю доступ для [tv.memberMention]. Добро пожаловать в чат!",
+      "Разблокирован доступ первого уровня для [tv.memberMention]."
+    ],
+    "quasar_ru": [
+      "Открываю доступ для [tv.memberMention]. Приветствуем в группе!\nПравила группы и полезная информация - [ссылка](https://github.com/DmitrijOkeanij/Quasar_Ru/blob/master/README.md).",
+      "Открываю доступ для [tv.memberMention]. Добро пожаловать в чат!\nПравила группы и полезная информация - [ссылка](https://github.com/DmitrijOkeanij/Quasar_Ru/blob/master/README.md)."",
+      "Разблокирован доступ первого уровня для [tv.memberMention].\nПравила группы и полезная информация - [ссылка](https://github.com/DmitrijOkeanij/Quasar_Ru/blob/master/README.md).""
+    ],
+    "qbot_staging": [
+      "Открываю доступ для [tv.memberMention]. Приветствуем в группе!\nПравила группы и полезная информация - [ссылка](https://github.com/DmitrijOkeanij/Quasar_Ru/blob/master/README.md).",
+      "Открываю доступ для [tv.memberMention]. Добро пожаловать в чат!\nПравила группы и полезная информация - [ссылка](https://github.com/DmitrijOkeanij/Quasar_Ru/blob/master/README.md)."",
+      "Разблокирован доступ первого уровня для [tv.memberMention].\nПравила группы и полезная информация - [ссылка](https://github.com/DmitrijOkeanij/Quasar_Ru/blob/master/README.md).""
+    ],
   },
 
   "MSG_NEWBIE_WELCOME": {
     "defaults": [
       "Добро пожаловать [tv.memberMention]. Напишите [tv.botMention] что бы пройти опознание и писать в чат.",
-      "Приветствуем  [tv.memberMention]! Напишите [tv.botMention] что бы пройти опознани что вы не бот.",
+      "Приветствуем  [tv.memberMention]! Напишите [tv.botMention] что бы пройти опознание что вы не бот.",
       "Приветствуем  [tv.memberMention]! Напишите [tv.botMention] что бы пройти опознание и писать в чат.",
       "Добро пожаловать [tv.memberMention]. Напишите [tv.botMention] что бы пройти опознани что вы не бот.",
       "Добро пожаловать [tv.memberMention]. Напишите [tv.botMention] что бы пройти ментальное опознание и писать в чат.",
